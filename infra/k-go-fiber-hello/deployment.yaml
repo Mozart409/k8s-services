@@ -4,21 +4,23 @@ metadata:
   name: go-fiber-hello
   namespace: amadeus
 spec:
-  replicas: 1
+  replicas: 3
+  revisionHistoryLimit: 7
   selector:
     matchLabels:
-      deployment: go-fiber-hello
+      app: go-fiber-hello
   template:
     metadata:
       labels:
-        deployment: go-fiber-hello
+        app: go-fiber-hello
     spec:
       containers:
         - name: go-fiber-hello
           image: mozart409/go-fiber-hello:v0.0.2
-          protocol: 'TCP'
           ports:
             - containerPort: 3000
+              name: http
+              protocol: TCP
           resources:
             limits:
               cpu: 100m

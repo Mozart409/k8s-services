@@ -4,8 +4,8 @@ metadata:
   name: guestbook-ui
   namespace: guestbook
 spec:
+  selector:
+    app: guestbook-ui
   ports:
     - port: 80
       targetPort: 80
-  selector:
-    app: guestbook-ui
