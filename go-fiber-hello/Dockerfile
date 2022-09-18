@@ -1,14 +1,12 @@
 FROM golang:1.18-alpine3.16 as builder
 
-WORKDIR /app
+WORKDIR /go/src/app
 COPY . .
 RUN go build -o go-fiber-hello
 
 
-FROM scratch as runner
+FROM alpine:3.16
 WORKDIR /app
+COPY --from=builder /go/src/app ./
 EXPOSE 3000
-COPY --from=builder /app/go-fiber-hello ./
-COPY --from=builder /app/public ./public
-
 CMD ["./go-fiber-hello"]
