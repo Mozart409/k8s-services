@@ -4,7 +4,7 @@ metadata:
   name: guestbook-ui
   namespace: guestbook
 spec:
-  replicas: 3
+  replicas: 5
   revisionHistoryLimit: 7
   selector:
     matchLabels:
@@ -15,7 +15,7 @@ spec:
         app: guestbook-ui
     spec:
       containers:
-        - image: gcr.io/heptio-images/ks-guestbook-demo:0.1
+        - image: gcr.io/heptio-images/ks-guestbook-demo:0.2
           name: guestbook-ui
           ports:
             - containerPort: 80
