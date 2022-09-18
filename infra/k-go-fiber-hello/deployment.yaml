@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-fiber-hello
+  namespace: amadeus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: go-fiber-hello
+  template:
+    metadata:
+      labels:
+        deployment: go-fiber-hello
+    spec:
+      containers:
+        - name: go-fiber-hello
+          image: mozart409/go-fiber-hello:v0.0.2
+          protocol: 'TCP'
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi

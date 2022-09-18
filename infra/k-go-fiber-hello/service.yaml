@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: go-fiber-hello
+  namespace: amadeus
+spec:
+  selector:
+    deployment: go-fiber-hello
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 8666
+      targetPort: 3000
